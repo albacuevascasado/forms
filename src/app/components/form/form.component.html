@@ -1,0 +1,65 @@
+<form [formGroup]="form" (ngSubmit)="save($event)">
+    <p>
+        <label>Name</label><br>
+        <input type="text" formControlName="name">
+    </p>
+    <div *ngIf="nameField!.errors && nameField!.touched">
+        <p *ngIf="nameField!.hasError('required')">
+          Field Mandatory  
+        </p> 
+    </div>
+    <p>
+        <label>Date</label><br>
+        <input type="date" formControlName=date>
+    </p>
+    <div *ngIf="dateField!.errors && dateField!.touched">
+        <p *ngIf="dateField!.hasError('required')">
+          Field Mandatory  
+        </p> 
+    </div>
+    <p>
+        <label>Email</label><br>
+        <input type="email" formControlName="email">  
+    </p>
+    <div *ngIf="emailField!.errors && emailField!.touched">
+        <p *ngIf="emailField!.hasError('email')">
+            Insert a correct format
+        </p>
+    </div>
+    <button type="button" (click)="doSomething()">Action</button>
+    <p>
+        <label>Text</label><br>
+        <textarea cols="30" rows="10" formControlName="text"></textarea>
+        {{textField!.value.length}} / 20
+    </p>
+    <div *ngIf="textField!.errors && textField!.touched">
+        <p *ngIf="textField!.hasError('maxlength')">
+          Max characters 20  
+        </p> 
+    </div>
+    <p>
+        <label>Category</label><br>
+        <select formControlName="category">
+            <option value="1">Category 1</option>
+            <option value="2">Category 2</option>
+            <option value="3">Category 3</option>
+        </select>
+    </p>
+    <div *ngIf="categoryField!.errors && categoryField!.touched">
+        <p *ngIf="categoryField!.hasError('required')">
+          Field Mandatory  
+        </p> 
+    </div>
+    <p>
+        <label>Gender</label><br>
+        <input type="radio" name="gender" formControlName="gender" value="male">Male
+        <input type="radio" name="gender" formControlName="gender" value="female">Female
+    </p>
+    <div *ngIf="genderField!.errors && genderField!.touched">
+        <p *ngIf="genderField!.hasError('required')">
+          Field Mandatory 
+        </p> 
+    </div>
+    <button type="submit">Save</button>
+</form>
+
